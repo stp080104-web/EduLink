@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduLink - Educación Digital</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-graduation-cap"></i>
+            <span>EduLink</span>
+        </div>
+        <div class="nav-links">
+            <a href="index.html" class="active"><i class="fas fa-home"></i> Inicio</a>
+            <a href="about.html"><i class="fas fa-info-circle"></i> Acerca de</a>
+            <button id="loginBtnNav" class="btn-login"><i class="fas fa-sign-in-alt"></i> Entrar</button>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>EduLink</h1>
+        <p>Educación a distancia, en cualquier lugar</p>
+        <button id="heroLoginBtn" class="btn-primary"><i class="fas fa-rocket"></i> Comenzar ahora</button>
+    </header>
+
+    <section class="info-section">
+        <h2><i class="fas fa-globe"></i> ¿Qué es la tele-educación?</h2>
+        <p>Es un sistema de aprendizaje donde alumnos y profesores se conectan a través de internet, usando protocolos
+            como HTTP/HTTPS y transmisión de datos en tiempo real.</p>
+        <p><strong>EduLink</strong> aplica todos los conceptos de Teleprocesos: cliente-servidor, transmisión de datos,
+            autenticación remota y streaming multimedia.</p>
+    </section>
+
+    <footer>
+        <p><i class="fas fa-code"></i> EduLink - Proyecto de Teleprocesos</p>
+    </footer>
+
+    <script>
+        const loginBtnNav = document.getElementById('loginBtnNav');
+        const heroLoginBtn = document.getElementById('heroLoginBtn');
+        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+        const userName = localStorage.getItem('userName') || '';
+
+        if (isLoggedIn) {
+            if (loginBtnNav) {
+                loginBtnNav.innerHTML = `<i class="fas fa-tachometer-alt"></i> Panel de Control`;
+                loginBtnNav.addEventListener('click', () => {
+                    window.location.href = 'dashboard.html';
+                });
+            }
+            if (heroLoginBtn) {
+                heroLoginBtn.innerHTML = `<i class="fas fa-book"></i> Ir a mis guías`;
+                heroLoginBtn.addEventListener('click', () => {
+                    window.location.href = 'dashboard.html';
+                });
+            }
+        } else {
+            loginBtnNav?.addEventListener('click', () => {
+                window.location.href = 'login.html';
+            });
+            heroLoginBtn?.addEventListener('click', () => {
+                window.location.href = 'login.html';
+            });
+        }
+    </script>
+</body>
+
+</html>
